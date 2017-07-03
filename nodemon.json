@@ -1,0 +1,7 @@
+{
+  "verbose": true,
+  "watch": ["src/node_modules/server", "src/node_modules/shared"],
+  "exec": "node .",
+  "ext": "js",
+  "ignoreRoot": ["./.git/", "./node_modules/"]
+}
