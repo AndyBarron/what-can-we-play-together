@@ -31,6 +31,7 @@
     "express": "4.15.3",
     "extract-text-webpack-plugin": "2.1.2",
     "html-webpack-plugin": "2.29.0",
+    "mkdir-recursive": "0.3.0",
     "nodemon": "1.11.0",
     "normalize.css": "7.0.0",
     "npm-run-all": "4.0.2",
