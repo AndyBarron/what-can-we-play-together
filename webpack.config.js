@@ -40,7 +40,8 @@ const config = module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'What can we play together?'
+      title: 'What can we play together?',
+      template: 'src/node_modules/client/template.html.ejs',
     }),
     new ExtractTextPlugin({
       filename: 'app.css?[hash:7]',
