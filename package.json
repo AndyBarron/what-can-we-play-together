@@ -33,6 +33,7 @@
     "dotenv": "4.0.0",
     "express": "4.15.3",
     "extract-text-webpack-plugin": "2.1.2",
+    "html-tags": "2.0.0",
     "html-webpack-plugin": "2.29.0",
     "mkdir-recursive": "0.3.0",
     "module-alias": "2.0.0",
@@ -46,6 +47,7 @@
     "react-dom": "15.6.1",
     "react-router-dom": "4.1.1",
     "style-loader": "0.18.2",
+    "underscore": "1.8.3",
     "webpack": "3.0.0",
     "webpack-dev-server": "2.4.5"
   },
