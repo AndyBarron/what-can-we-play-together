@@ -1,5 +1,5 @@
 {
-  "name": "common-games",
+  "name": "what-can-we-play-together",
   "version": "0.0.1",
   "description": "What Steam games can we play together?",
   "main": "src/node_modules/server",
@@ -33,7 +33,6 @@
     "dotenv": "4.0.0",
     "express": "4.15.3",
     "extract-text-webpack-plugin": "2.1.2",
-    "html-tags": "2.0.0",
     "html-webpack-plugin": "2.29.0",
     "mkdir-recursive": "0.3.0",
     "module-alias": "2.0.0",
@@ -55,7 +54,7 @@
     "coffee-script": "node_modules/coffeescript"
   },
   "engines": {
-    "node": "8.1.3",
-    "npm": "5.1.0"
+    "node": "8.2.1",
+    "npm": "5.3.0"
   }
 }

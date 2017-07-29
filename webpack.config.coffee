@@ -3,12 +3,12 @@ BabiliPlugin = require 'babili-webpack-plugin'
 ExtractTextPlugin = require 'extract-text-webpack-plugin'
 HtmlWebpackPlugin = require 'html-webpack-plugin'
 moduleAlias = require 'module-alias'
-OptimizeCssAssetsWebpackPlugin = require 'optimize-css-assets-webpack-plugin'
+OptimizeCssPlugin = require 'optimize-css-assets-webpack-plugin'
 path = require 'path'
 webpack = require 'webpack'
 
-exclude = new RegExp '^' + (path.resolve 'node_modules')
-prod = process.env.NODE_ENV == 'production'
+EXCLUDE = new RegExp '^' + (path.resolve 'node_modules')
+PROD = process.env.NODE_ENV is 'production'
 
 config = module.exports =
   entry: [
@@ -28,23 +28,23 @@ config = module.exports =
       {
         test: /\.css$/
         use: ExtractTextPlugin.extract
-          fallback: 'style-loader' # when plugin is disabled i.e. during development
+          fallback: 'style-loader' # when plugin is disabled i.e. during dev
           use: ['css-loader']
       }
       {
         test: /\.coffee$/
         loader: 'babel-loader!coffee-loader'
-        exclude: exclude
+        exclude: EXCLUDE
       }
       {
         test: /\.js$/
         loader: 'babel-loader'
-        exclude: exclude
+        exclude: EXCLUDE
       }
       {
         test: /\.jsx$/
         loader: 'babel-loader'
-        exclude: exclude
+        exclude: EXCLUDE
       }
     ]
   plugins: [
@@ -53,7 +53,7 @@ config = module.exports =
       template: 'src/node_modules/client/template.html.ejs'
     new ExtractTextPlugin
       filename: 'app.css?[hash:7]'
-      disable: !prod
+      disable: !PROD
   ]
   devServer:
     historyApiFallback: true
@@ -65,13 +65,13 @@ config = module.exports =
 
 plugins = config.plugins
 
-if prod
+if PROD
   plugins.unshift.apply plugins, [
     new webpack.DefinePlugin
       'process.env':
         'NODE_ENV': JSON.stringify 'production'
     new BabiliPlugin
-    new OptimizeCssAssetsWebpackPlugin
+    new OptimizeCssPlugin
       assetNameRegExp: /\.css(\?.*)?$/i
   ]
   config.devtool = 'source-map'
