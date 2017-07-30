@@ -7,7 +7,7 @@ OptimizeCssPlugin = require 'optimize-css-assets-webpack-plugin'
 path = require 'path'
 webpack = require 'webpack'
 
-EXCLUDE = new RegExp '^' + (path.resolve 'node_modules')
+EXCLUDE = new RegExp '^' + (path.join __dirname, 'node_modules')
 PROD = process.env.NODE_ENV is 'production'
 DEV = not PROD
 
@@ -16,10 +16,10 @@ config = module.exports =
     'babel-polyfill'
     'react-hot-loader/patch' unless PROD
     'normalize.css'
-    path.resolve 'src', 'node_modules', 'client', 'index.coffee'
+    path.join __dirname, 'src', 'node_modules', 'client', 'index.coffee'
   ].filter (x) => x
   output:
-    path: path.resolve 'dist'
+    path: path.join __dirname, 'dist'
     filename: 'app.js?[hash:7]'
     publicPath: '/'
   resolve:
