@@ -16,7 +16,6 @@ config = module.exports =
     'babel-polyfill'
     'react-hot-loader/patch' unless PROD
     'normalize.css'
-    path.resolve 'src', 'node_modules', 'client', 'style.css'
     path.resolve 'src', 'node_modules', 'client', 'index.coffee'
   ].filter (x) => x
   output:
@@ -24,14 +23,21 @@ config = module.exports =
     filename: 'app.js?[hash:7]'
     publicPath: '/'
   resolve:
-    extensions: ['*', '.js', '.jsx', '.coffee']
+    extensions: ['*', '.js', '.jsx', '.coffee', '.styl']
   module:
     rules: [
+      # Global CSS rule is only used to load normalize.css
       {
         test: /\.css$/
         use: ExtractTextPlugin.extract
           fallback: ['style-loader'] # when plugin is disabled i.e. during dev
           use: ['css-loader']
+      }
+      {
+        test: /\.styl$/
+        use: ExtractTextPlugin.extract
+          fallback: ['style-loader'] # when plugin is disabled i.e. during dev
+          use: ['css-loader?modules', 'stylus-loader']
       }
       {
         test: /\.coffee$/
