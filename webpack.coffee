@@ -35,18 +35,40 @@ config = module.exports =
       }
       {
         test: /\.coffee$/
-        loader: ['react-hot-loader/webpack', 'babel-loader', 'coffee-loader']
+        use: [
+          'react-hot-loader/webpack'
+          {
+            loader: 'babel-loader'
+            options:
+              presets: ['env', 'react']
+          }
+          'coffee-loader'
+        ]
         exclude: EXCLUDE
       }
       {
         test: /\.js$/
-        loader: ['react-hot-loader/webpack', 'babel-loader']
         exclude: EXCLUDE
+        use: [
+          'react-hot-loader/webpack'
+          {
+            loader: 'babel-loader'
+            options:
+              presets: ['env']
+          }
+        ]
       }
       {
         test: /\.jsx$/
-        loader: ['react-hot-loader/webpack', 'babel-loader']
         exclude: EXCLUDE
+        use: [
+          'react-hot-loader/webpack'
+          {
+            loader: 'babel-loader'
+            options:
+              presets: ['env', 'react']
+          }
+        ]
       }
     ]
   plugins: [
